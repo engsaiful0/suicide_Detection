@@ -8,11 +8,12 @@ Original file is located at
 """
 
 # @title Install Required Libraries
-!pip install imbalanced-learn xgboost lightgbm shap tensorflow
+#pip install imbalanced-learn xgboost lightgbm shap tensorflow
 
 # @title Import Libraries
 import pandas as pd
 import numpy as np
+import os
 
 # Visualization
 import matplotlib.pyplot as plt
@@ -35,9 +36,18 @@ import lightgbm as lgb
 import shap
 
 # @title Load Dataset
-from google.colab import files
-files.upload()
-file_path = "suicidal_ideation_reddit_annotated.csv"
+# Ensure 'suicidal_ideation_reddit_annotated.csv' is in the current directory
+# from google.colab import files
+# files.upload()
+try:
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+except NameError:
+    script_dir = os.getcwd()
+
+file_path = os.path.join(script_dir, "suicidal_ideation_reddit_annotated.csv")
+if not os.path.exists(file_path):
+    file_path = "suicidal_ideation_reddit_annotated.csv"
+
 df = pd.read_csv(file_path)
 df.head()
 
@@ -360,9 +370,18 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Step 2: Load Dataset
-from google.colab import files
-files.upload()
-file_path = "suicidal_ideation_reddit_annotated.csv"
+# Ensure 'suicidal_ideation_reddit_annotated.csv' is in the current directory
+# from google.colab import files
+# files.upload()
+try:
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+except NameError:
+    script_dir = os.getcwd()
+
+file_path = os.path.join(script_dir, "suicidal_ideation_reddit_annotated.csv")
+if not os.path.exists(file_path):
+    file_path = "suicidal_ideation_reddit_annotated.csv"
+    
 df = pd.read_csv(file_path)
 df.head()
 
